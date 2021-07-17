@@ -1,0 +1,21 @@
+CREATE TABLE league (
+	id INT PRIMARY KEY AUTO_INCREMENT  ,
+	name VARCHAR(50) NOT NULL ,
+	start_date DATETIME NOT NULL ,
+	end_date DATETIME
+) ;
+
+CREATE TABLE participant (
+	id INT PRIMARY KEY AUTO_INCREMENT ,
+	full_name VARCHAR(50) NOT NULL ,
+	email VARCHAR(100) NOT NULL ,
+	dateOfBirth DATE NOT NULL
+) ;
+
+CREATE TABLE round (
+	id INT PRIMARY KEY AUTO_INCREMENT ,
+	rank INT NOT NULL ,
+	closed BOOLEAN NOT NULL ,
+	league INT NOT NULL ,
+	CONSTRAINT FK_round_league FOREIGN KEY(league) REFERENCES league(id)  ON DELETE CASCADE
+) ;
